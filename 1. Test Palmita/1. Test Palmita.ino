@@ -24,14 +24,13 @@
 #define TINY_GSM_TEST_GPRS true
 #define TINY_GSM_TEST_TCP true
 #define TINY_GSM_TEST_SSL true
-#define TINY_GSM_TEST_CALL false
-#define TINY_GSM_TEST_SMS false
-#define TINY_GSM_TEST_USSD false
+#define TINY_GSM_TEST_CALL true
+#define TINY_GSM_TEST_SMS true
+#define TINY_GSM_TEST_USSD true
 #define TINY_GSM_TEST_BATTERY true
 #define TINY_GSM_TEST_TEMPERATURE true
-#define TINY_GSM_TEST_NTP false
-#define TINY_GSM_TEST_TIME false
-#define TINY_GSM_POWERDOWN false
+#define TINY_GSM_TEST_TIME true
+#define TINY_GSM_POWERDOWN true
 
 // Configurar el PIN GSM, si lo hubiera
 #define GSM_PIN ""
@@ -92,7 +91,7 @@ void loop()
   Serial.println("Modem Test AT OK");
 
   /**************************************************************
-    Prueba: Inicializar modem para conexion a red y gprs
+    Prueba: Inicializar modem para Conexión a red y gprs
     Extra: -------
    **************************************************************/
 
@@ -117,7 +116,7 @@ void loop()
   DBG("Info Modem:", modemInfo);
 
   /**************************************************************
-  Prueba: Conexion a red celular
+  Prueba: Conexión a red celular
   Extra: -------
  **************************************************************/
 
@@ -140,6 +139,11 @@ void loop()
   {
     DBG("Network connected");
   }
+
+  /**************************************************************
+   Prueba: Conexión a gprs
+   Extra: -------
+  **************************************************************/
 
 #if TINY_GSM_TEST_GPRS
   DBG("Connecting to", apn);
@@ -171,6 +175,11 @@ void loop()
   DBG("Signal quality:", csq);
 #endif
 
+  /**************************************************************
+   Prueba: Comando USSD
+   Extra: -------
+  **************************************************************/
+
 #if TINY_GSM_TEST_USSD && defined TINY_GSM_MODEM_HAS_SMS
   String ussd_balance = modem.sendUSSD("*111#");
   DBG("Balance (USSD):", ussd_balance);
@@ -178,6 +187,11 @@ void loop()
   String ussd_phone_num = modem.sendUSSD("*161#");
   DBG("Phone number (USSD):", ussd_phone_num);
 #endif
+
+  /**************************************************************
+   Prueba: Conexión server prueba
+   Extra: -------
+  **************************************************************/
 
 #if TINY_GSM_TEST_TCP && defined TINY_GSM_MODEM_HAS_TCP
   TinyGsmClient client(modem, 0);
@@ -224,6 +238,11 @@ void loop()
   }
 #endif
 
+  /**************************************************************
+   Prueba: Conexión server prueba ssl
+   Extra: -------
+  **************************************************************/
+
 #if TINY_GSM_TEST_SSL && defined TINY_GSM_MODEM_HAS_SSL
   TinyGsmClientSecure secureClient(modem, 1);
   const int securePort = 443;
@@ -269,6 +288,11 @@ void loop()
   }
 #endif
 
+  /**************************************************************
+   Prueba: Llamadas telefónicas
+   Extra: -------
+  **************************************************************/
+
 #if TINY_GSM_TEST_CALL && defined TINY_GSM_MODEM_HAS_CALLING && \
     defined CALL_TARGET
   DBG("Calling:", CALL_TARGET);
@@ -297,27 +321,32 @@ void loop()
   }
 #endif
 
+  /**************************************************************
+   Prueba: SMS
+   Extra: -------
+  **************************************************************/
+
 #if TINY_GSM_TEST_SMS && defined TINY_GSM_MODEM_HAS_SMS && defined SMS_TARGET
-  res = modem.sendSMS(SMS_TARGET, String("Hello from ") + imei);
-  DBG("SMS:", res ? "OK" : "fail");
+  bool sms = modem.sendSMS(SMS_TARGET, String("Hello from ") + imei);
+  DBG("SMS:", sms ? "OK" : "fail");
 
-  // This is only supported on SIMxxx series
-  res = modem.sendSMS_UTF8_begin(SMS_TARGET);
-  if (res)
-  {
-    auto stream = modem.sendSMS_UTF8_stream();
-    stream.print(F("Привіііт! Print number: "));
-    stream.print(595);
-    res = modem.sendSMS_UTF8_end();
-  }
-  DBG("UTF8 SMS:", res ? "OK" : "fail");
+  // // This is only supported on SIMxxx series
+  // res = modem.sendSMS_UTF8_begin(SMS_TARGET);
+  // if (res)
+  // {
+  //   auto stream = modem.sendSMS_UTF8_stream();
+  //   stream.print(F("Привіііт! Print number: "));
+  //   stream.print(595);
+  //   res = modem.sendSMS_UTF8_end();
+  // }
+  DBG("UTF8 SMS:", sms ? "OK" : "fail");
 
 #endif
 
-#if TINY_GSM_TEST_NTP && defined TINY_GSM_MODEM_HAS_NTP
-  DBG("Asking modem to sync with NTP");
-  modem.NTPServerSync("132.163.96.5", 20);
-#endif
+  /**************************************************************
+   Prueba: Obtener hora red celular
+   Extra: -------
+  **************************************************************/
 
 #if TINY_GSM_TEST_TIME && defined TINY_GSM_MODEM_HAS_TIME
   int year3 = 0;
@@ -349,6 +378,11 @@ void loop()
   DBG("Current Network Time:", time);
 #endif
 
+  /**************************************************************
+   Prueba: Bateria
+   Extra: -------
+  **************************************************************/
+
 #if TINY_GSM_TEST_BATTERY && defined TINY_GSM_MODEM_HAS_BATTERY
   uint8_t chargeState = -99;
   int8_t percent = -99;
@@ -359,10 +393,20 @@ void loop()
   DBG("Battery voltage:", milliVolts / 1000.0F);
 #endif
 
+  /**************************************************************
+   Prueba: Temperatura
+   Extra: -------
+  **************************************************************/
+
 #if TINY_GSM_TEST_TEMPERATURE && defined TINY_GSM_MODEM_HAS_TEMPERATURE
   float temp = modem.getTemperature();
   DBG("Chip temperature:", temp);
 #endif
+
+  /**************************************************************
+   Prueba: Apagar Módulo
+   Extra: -------
+  **************************************************************/
 
 #if TINY_GSM_POWERDOWN
 
