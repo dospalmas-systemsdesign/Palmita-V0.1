@@ -16,8 +16,8 @@
 #define GSM_PIN "" // Configurar el PIN de la SIM si es necesario (dejar en blanco si no aplica)
 
 // Establecer números de teléfono para probar funcionalidad de SMS y llamadas
-#define NUMERO_SMS "+526681570333"     // Número al cual se enviarán los mensajes SMS
-#define NUMERO_LLAMADA "+526681570333" // Número al cual se realizarán las llamadas
+#define NUMERO_SMS "+5266819999"     // Número al cual se enviarán los mensajes SMS
+#define NUMERO_LLAMADA "+526681999999" // Número al cual se realizarán las llamadas
 
 // Credenciales GPRS para conexión a internet
 const char apn[] = "internet.itelcel.com"; // APN del operador (en este caso Telcel)
