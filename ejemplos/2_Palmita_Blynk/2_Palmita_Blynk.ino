@@ -65,49 +65,6 @@ TinyGsm modem(Serial1); // Inicializar el módem sin depurador (sin ver los coma
 BlynkTimer timer; // Crear un objeto timer para manejar eventos temporizados en Blynk
 
 /**************************************************************
-  Información: Función para enviar datos aleatorios a Blynk.
-  Descripción: Esta función se ejecuta en intervalos regulares
-  para generar un número aleatorio y enviarlo a la plataforma Blynk
-  a través del pin virtual V0. También imprime el dato en el monitor
-  serial para fines de depuración.
- **************************************************************/
-void funcionIntervaloBlynk() // Definición de la función que envía datos a Blynk
-{
-  // Imprimir una línea en blanco para separar las salidas en el monitor serial
-  Serial.println();
-  // Imprimir un separador visual
-  Serial.println("--------------------------------------------------");
-  Serial.println("               ENVIANDO DATOS A BLYNK             "); // Mensaje indicando que se están enviando datos
-  Serial.println("--------------------------------------------------");
-
-  // Generar un número aleatorio entre 0 y 9999
-  unsigned long dato = random(0, 10000);
-
-  // Imprimir el dato aleatorio generado en el monitor serial
-  Serial.println("Dato Aleatorio: " + String(dato));
-
-  // Enviar el dato aleatorio a Blynk, utilizando el pin virtual V0
-  Blynk.virtualWrite(V0, dato);
-}
-
-/**************************************************************
-  Información: Función para depurar mensajes.
-  Descripción: Esta función se utiliza para imprimir mensajes
-  de depuración en el monitor serial.
- **************************************************************/
-void DBG(const String &message, const String &value = "")
-{
-  if (value != "")
-  {
-    Serial.println(message + value);
-  }
-  else
-  {
-    Serial.println(message);
-  }
-}
-
-/**************************************************************
   Información: Configuración inicial del programa.
   Descripción: Esta función se ejecuta una vez al inicio del programa.
   Se encarga de inicializar la comunicación serial y configurar
@@ -207,5 +164,48 @@ void loop()
   else
   {
     DBG("[Modem]: AT ERROR"); // Mensaje de error en los comandos AT
+  }
+}
+
+/**************************************************************
+  Información: Función para enviar datos aleatorios a Blynk.
+  Descripción: Esta función se ejecuta en intervalos regulares
+  para generar un número aleatorio y enviarlo a la plataforma Blynk
+  a través del pin virtual V0. También imprime el dato en el monitor
+  serial para fines de depuración.
+ **************************************************************/
+void funcionIntervaloBlynk() // Definición de la función que envía datos a Blynk
+{
+  // Imprimir una línea en blanco para separar las salidas en el monitor serial
+  Serial.println();
+  // Imprimir un separador visual
+  Serial.println("--------------------------------------------------");
+  Serial.println("               ENVIANDO DATOS A BLYNK             "); // Mensaje indicando que se están enviando datos
+  Serial.println("--------------------------------------------------");
+
+  // Generar un número aleatorio entre 0 y 9999
+  unsigned long dato = random(0, 10000);
+
+  // Imprimir el dato aleatorio generado en el monitor serial
+  Serial.println("Dato Aleatorio: " + String(dato));
+
+  // Enviar el dato aleatorio a Blynk, utilizando el pin virtual V0
+  Blynk.virtualWrite(V0, dato);
+}
+
+/**************************************************************
+  Información: Función para depurar mensajes.
+  Descripción: Esta función se utiliza para imprimir mensajes
+  de depuración en el monitor serial.
+ **************************************************************/
+void DBG(const String &message, const String &value = "")
+{
+  if (value != "")
+  {
+    Serial.println(message + value);
+  }
+  else
+  {
+    Serial.println(message);
   }
 }
