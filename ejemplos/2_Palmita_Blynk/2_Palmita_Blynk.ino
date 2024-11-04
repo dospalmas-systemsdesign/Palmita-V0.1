@@ -13,8 +13,6 @@
 
 #define TINY_GSM_DEBUG Serial // Definir la consola serial para imprimir mensajes de depuración (Serial Monitor)
 
-#define GSM_PIN "" // Configurar el PIN de la SIM si es necesario, dejar en blanco si la tarjeta SIM no tiene PIN
-
 // Credenciales GPRS para la conexión a internet
 const char apn[] = "internet.itelcel.com"; // APN del operador (en este caso Telcel)
 const char gprsUser[] = "webgprs";         // Usuario GPRS para autenticación
@@ -46,15 +44,12 @@ const char gprsPass[] = "webgprs2003";     // Contraseña GPRS para autenticaci�
   para la comunicación con el módem SIM800L y la integración con Blynk.
  **************************************************************/
 
-// Incluir la librería para manejar el cliente GSM
-#include <TinyGsmClient.h>
+#include <TinyGsmClient.h>      // Incluir la librería para manejar el cliente GSM
+#include <BlynkSimpleTinyGSM.h> // Incluir la librería para la integración de Blynk con TinyGSM
 
-// Incluir la librería para la integración de Blynk con TinyGSM
-#include <BlynkSimpleTinyGSM.h>
+#ifdef DUMP_AT_COMMANDS // Verificar si se habilita la depuración de comandos AT
 
-// Verificar si se habilita la depuración de comandos AT
-#ifdef DUMP_AT_COMMANDS
-                                       // Incluir la librería para depuración de comandos AT
+// Incluir la librería para depuración de comandos AT
 #include <StreamDebugger.h>
 StreamDebugger debugger(Serial1, Serial); // Inicializar el depurador de comandos AT para visualizar en el monitor serial
 TinyGsm modem(debugger);                  // Inicializar el módem utilizando el depurador para comandos AT

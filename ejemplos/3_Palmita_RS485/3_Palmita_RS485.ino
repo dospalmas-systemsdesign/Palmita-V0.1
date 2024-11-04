@@ -16,11 +16,11 @@
 #define PIN_RX_RS485 16 // Definición del pin RX para la comunicación RS485
 #define PIN_TX_RS485 17 // Definición del pin TX para la comunicación RS485
 #define DE_RE_PIN 5     // Definición del pin para controlar la dirección de transmisión
- /**************************************************************
-    Información: Inicialización de la comunicación serie
-    Descripción: Configura la comunicación serie con la computadora
-                 y el módulo RS485, estableciendo los pines y modos.
-  **************************************************************/
+                        /**************************************************************
+                           Información: Inicialización de la comunicación serie
+                           Descripción: Configura la comunicación serie con la computadora
+                                        y el módulo RS485, estableciendo los pines y modos.
+                         **************************************************************/
 void setup()
 {
   // Inicializa la comunicación serie con la computadora a 115200 baudios
@@ -37,12 +37,12 @@ void setup()
   digitalWrite(DE_RE_PIN, LOW); // LOW para modo recepción
 }
 
-  /**************************************************************
-    Información: Lectura de datos del sensor
-    Descripción: Envía solicitudes de lectura de temperatura y
-                 humedad a través de Modbus RTU, y procesa las respuestas.
-  **************************************************************/
- 
+/**************************************************************
+  Información: Lectura de datos del sensor
+  Descripción: Envía solicitudes de lectura de temperatura y
+               humedad a través de Modbus RTU, y procesa las respuestas.
+**************************************************************/
+
 void loop()
 {
   // ----------- Lectura de temperatura (0x0001) -----------
