@@ -25,3 +25,5 @@ En la carpeta **ejemplos**, encontrarás una colección de ejemplos que muestran
 
 - **1_Palmita_Test**: Código para probar diversas funcionalidades del módem SIM800L usando la librería TinyGSM.
 - **2_Palmita_Blynk**: Código para integrar Palmita V1 a Blynk (plataforma IoT) mandando un valor aleatorio
+- **3_Palmita_RS485**: Código para probar la interfaz RS485 disponible en la placa Palmita V1, en el ejemplo usamos el sensor XY-MD02. Este código se utiliza para leer la temperatura y humedad de un dispositivo Modbus RTU
+- **4_Palmita_Led_Test**: Este código configura y controla el LED RGB que incluye la placa Palmita V1 alternando entre los colores rojo, verde, azul y apagado.
