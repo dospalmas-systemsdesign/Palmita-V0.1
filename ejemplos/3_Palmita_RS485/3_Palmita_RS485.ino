@@ -1,8 +1,8 @@
 /**************************************************************
   Código: 3__Palmita_RS485
-  Placa: Palmita_V1
+  Placa: Palmita_V0.1
   Información: Código para probar la interfaz RS485 disponible
-  en la placa Palmita V1, en el ejemplo usamos el sensor XY-MD02.
+  en la placa Palmita V0.1, en el ejemplo usamos el sensor XY-MD02.
   Este código se utiliza para leer la temperatura y humedad de un
   dispositivo Modbus RTU utilizando el protocolo RS485
  **************************************************************/

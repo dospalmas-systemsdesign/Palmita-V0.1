@@ -1,7 +1,7 @@
 /**************************************************************
   Código: 2_Palmita_Blynk_GSM
-  Placa: Palmita_V1
-  Información: Código para integrar Palmita V1 a Blynk (plataforma IoT)
+  Placa: Palmita_V0.1
+  Información: Código para integrar Palmita V0.1 a Blynk (plataforma IoT)
   mandando un valor aleatorio
  **************************************************************/
 
@@ -19,9 +19,9 @@ const char gprsUser[] = "webgprs";         // Usuario GPRS para autenticación
 const char gprsPass[] = "webgprs2003";     // Contraseña GPRS para autenticación
 
 /**************************************************************
-  Información: Código para la integración de Palmita V1 con Blynk.
+  Información: Código para la integración de Palmita V0.1 con Blynk.
   Descripción: Credenciales necesarias para
-  la comunicación con la plataforma Blynk, utilizando la placa Palmita V1
+  la comunicación con la plataforma Blynk, utilizando la placa Palmita V0.1
   y el módem SIM800L.
  **************************************************************/
 
@@ -32,7 +32,7 @@ const char gprsPass[] = "webgprs2003";     // Contraseña GPRS para autenticaci�
 /**************************************************************
   Información: Pinout para la comunicación con el módem SIM800L.
   Descripción: Definición de los pines utilizados para la transmisión (TX)
-  y recepción (RX) de datos entre la placa Palmita V1 y el módem SIM800L.
+  y recepción (RX) de datos entre la placa Palmita V0.1 y el módem SIM800L.
  **************************************************************/
 
 #define PIN_RX_GSM 19 // Pin RX (Recepción de datos) utilizado para la comunicación con el módem SIM800L

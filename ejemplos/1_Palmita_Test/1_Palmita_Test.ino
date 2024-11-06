@@ -1,6 +1,6 @@
 /**************************************************************
   Código: 1_Palmita_Test
-  Placa: Palmita_V1
+  Placa: Palmita_V0.1
   Información: Código para probar diversas funcionalidades
   del módem SIM800L usando la librería TinyGSM
  **************************************************************/
@@ -25,9 +25,9 @@ const char gprsUser[] = "webgprs";         // Usuario GPRS
 const char gprsPass[] = "webgprs2003";     // Contraseña GPRS
 
 /**************************************************************
-  Información: Pinout placa palmita v1
+  Información: Pinout placa palmita V0.1
   Descripción: Definición de los pines utilizados para la comunicación
-  serial con el módem SIM800L en la placa Palmita V1
+  serial con el módem SIM800L en la placa Palmita V0.1
  **************************************************************/
 
 #define PIN_RX_GSM 19 // Pin RX para la comunicación con el módem SIM800L

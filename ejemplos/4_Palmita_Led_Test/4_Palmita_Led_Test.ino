@@ -1,9 +1,9 @@
 
 /**************************************************************
   Código: 4_Palmita_Led_Test
-  Placa: Palmita_V1
+  Placa: Palmita_V0.1
   Información: Este código configura y controla el LED RGB que
-  incluye la placa Palmita V1 alternando entre los colores rojo,
+  incluye la placa Palmita V0.1 alternando entre los colores rojo,
   verde, azul y apagado.
  **************************************************************/
 
