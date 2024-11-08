@@ -45,16 +45,16 @@ A continuación se presenta el pinout de la placa IoT:
 ### Detalles del Pinout
 
 - **Referencia GSM**
-  ![Referencia GSM](./Imagenes/referencias_gsm.png)
+  ![Referencia GSM](./Imagenes/referencias_gsm(2).png)
 
 - **Referencia RS485**
-  ![Referencia RS485](./Imagenes/referencias_485.png)
+  ![Referencia RS485](./Imagenes/referencias_485(2).png)
 
 - **Referencia Jumpers**
-  ![Referencia Jumpers](./Imagenes/referencias_jumper.png)
+  ![Referencia Jumpers](./Imagenes/referencias_jumper(2).png)
 
 - **Referencia Led**
-  ![Referencia Led](./Imagenes/referencias_led.png)
+  ![Referencia Led](./Imagenes/referencias_led(2).png)
 
 
 ## Ejemplos
